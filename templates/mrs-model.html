@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender System</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #1f242d;
+        color: white;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    section {
+        min-height: 80vh;
+        padding: 4rem 9% 2rem !important;
+    }
+
+    span {
+        color: #0ef;
+    }
+
+    .recommender {
+        justify-content: center;
+        align-items: center;        
+        gap: 2rem;        
+    }
+
+    .recommender h1 {
+        display: flex;
+        font-size: 3rem;
+        font-weight: 700;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .recommender form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #dropdowns {
+        padding: 1rem;
+        border-radius: 1rem;
+        background: #323946;
+        color: #fff;
+        font-size: 1rem;
+    }
+
+    .btnn {
+        display: flex;
+        padding: 1rem 2.8rem;
+        background: #0ef;
+        border-radius: 1rem;
+        box-shadow: 0 0 1rem #0ef;
+        font-size: 1.4rem;
+        margin: 2rem;
+        color: #fff;
+        font-weight: 600;
+        text-decoration-line: none;
+        cursor: pointer;
+        transition: .5s ease;
+    }
+
+    .btnn:hover {
+        box-shadow: none;
+    }
+
+    .recommendation {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+    }
+
+    .cards {
+        background: #323946;
+        width: 15vw;
+        height: 24vw;
+        border-radius: 1rem;
+        border: .2rem solid #0ef;
+        overflow: hidden;
+    }
+
+    .cards img {
+        width: 14.7vw;
+        height: 20vw;
+        border-radius: 1rem;
+    }
+
+    .cards p {
+        padding: .2rem;
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: center;        
+    }
+    @media (max-width: 768px) {
+        .recommendation {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      .cards{
+        width: 30vw;
+        height: 39vw;
+      }
+      .cards img {
+        width: 30vw;
+        height: 30vw;        
+    }
+    .cards p {
+        padding: .2rem;
+        font-size: 2rem;
+        font-weight: 400;               
+    }
+    .recommender h1 {        
+        font-size: 2rem;
+        font-weight: 500;        
+    }
+    }
+    
+</style>
+</head>
+<body>    
+    <section class="recommender">
+        <h1><span>Movies </span> Recommender System</h1>
+        <form action="" method="post"> {% csrf_token %}
+            <select type="text" name="smovie" id="dropdowns" title="Select Movie">
+                <option value="" selected disabled>Select Movie</option>
+                {%for i in movie_title|slice:"0:"%}
+                <option>{{i}}</option>
+                {%endfor%}
+            </select>
+            <!-- Add selected movie name -->
+             <h3>Selected Movie: {{selected_movie}}</h3>
+            <button class="btnn" type="submit">Recommend</button>
+        </form>
+        <div class="recommendation">
+            {% for i in poster|slice:"0:"%}
+            <div class="cards">
+                <img src="{{i.1}}" alt="" srcset="">
+                <p>{{i.0}}</p>                
+            </div>
+            {%endfor%}
+
+        </div>
+    </section>
+</body>
+</html>
