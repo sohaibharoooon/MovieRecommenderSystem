@@ -2,9 +2,29 @@
 
 A simple Django-based web application that recommends movies based on your preferences.
 
+## Making Process
+
+This project was developed using the following steps:
+1️⃣. **Data Collection**: Gathered a dataset of movies with relevant features such as genres, keywords, cast, and crew.
+Downloaded from Kaggle. link: https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
+
+2️⃣. **Data Preprocessing**: Cleaned and preprocessed the data to handle missing values, normalize text, and create a unified feature set.
+
+3️⃣. **Feature Engineering**: Combined relevant features into a single 'tags' column and applied text processing techniques like tokenization, stemming, and vectorization.
+
+4️⃣. **Model Training**: Used cosine similarity to compute similarities between movies based on their feature vectors.
+
+5️⃣. **Web Development**: Built a user-friendly web interface using Django to allow users to select a movie and get recommendations.
+
+6️⃣. **Deployment**: Deployed the application on a local server for testing and demonstration purposes.
+
+✅ Whole process is done in Jupyter Notebook. see MRS_Notebook.ipynb file for more details.
+
+
 ## Features
 
-- Personalized movie recommendations
+- Movie recommendations base on slected movie prasent in the database
+- Uses cosine similarity for recommendations
 - User-friendly interface
 - Powered by Django
 
