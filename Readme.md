@@ -2,7 +2,7 @@
 
 A simple Django-based web application that recommends movies based on your preferences.
 
-![Demo](Media\Screenshot.png)
+![Demo](Asset/Screenshot.png)
 
 ## Making Process
 
